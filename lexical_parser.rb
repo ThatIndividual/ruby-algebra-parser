@@ -166,14 +166,14 @@ def grammar_valid?(token_array)
 end
 
 def syntactic_analysis(parser_input)
-  if(grammar_valid?(parser_input))
-  print "=== Grammar check ===\n"
-  print "Expression is gramatically valid\n"
-  # do fing hear
+  if(grammar_valid?(parser_input) == 1)
+    print "=== Grammar check ===\n"
+    print "Expression is gramatically valid\n"
+    # do fing hear
   end
 end
 
-expression = "12*-1*(3.5+4.5)^2"
+expression = "12*-1*(3.5+4.5)^2+("
 print "=== Raw espression ===\n#{expression}\n\n=== Lexer output ===\n"
 tokenized = lexical_analysis(expression)
 tokenized.each do |x|
