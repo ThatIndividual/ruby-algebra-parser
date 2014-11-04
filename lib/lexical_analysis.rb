@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 require_relative "lexical_analysis/token.rb"
 
@@ -33,24 +33,24 @@ def lexical_analysis(parser_input)
           end
         end
       end
-      parser_output.push(Token.new(current_token, parser_state))
+      parser_output.push(Token.new(parser_state, current_token))
       parser_state = nil
       current_token = ""
     when /^[+*^\/]/
-      parser_output.push(Token.new(parser_input[0], :operator))
+      parser_output.push(Token.new(:operator, parser_input[0]))
       parser_input[0] = ''
     when /^[-]/
       if(parser_output.last.type==:operator && parser_input.match(/^-[0-9.]/))
         current_token = "-"
       else
-        parser_output.push(Token.new("-", :operator))
+        parser_output.push(Token.new(:operator, "-"))
       end
       parser_input[0] = ''
     when /^[(]/
-      parser_output.push(Token.new("(", :parens_open))
+      parser_output.push(Token.new(:parens_open, "("))
       parser_input[0] = ''
     when /^[)]/
-      parser_output.push(Token.new(")", :parens_close))
+      parser_output.push(Token.new(:parens_close, ")"))
       parser_input[0] = ''
     else
       parser_input[0] = ''

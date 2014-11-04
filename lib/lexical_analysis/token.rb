@@ -1,10 +1,10 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 class Token
-  attr_reader :value, :type
+  attr_reader :type, :value
 
-  def initialize(value, type)
-    @value = value
+  def initialize(type, value)
     @type  = type
+    @value = value
   end
 end
