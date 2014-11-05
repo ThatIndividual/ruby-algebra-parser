@@ -2,8 +2,14 @@
 
 def grammar_valid?(token_array)
   token_array.each_index do |i|
-    if i == token_array.length-1
-      break
+    if(i == token_array.length-1)
+      if(token_array[i].type != :operator)
+        break
+      else
+        print "=== Grammar error ===\n"
+        print "Expression may not end in an operand\n"
+        return 0
+      end
     end
     case token_array[i].type
     when :float, :integer

@@ -40,10 +40,14 @@ def lexical_analysis(parser_input)
       parser_output.push(Token.new(:operator, parser_input[0]))
       parser_input[0] = ''
     when /^[-]/
-      if(parser_output.last.type==:operator && parser_input.match(/^-[0-9.]/))
-        current_token = "-"
+      if(parser_output.length > 0)
+        if(parser_output.last.type==:operator && parser_input.match(/^-[0-9.]/))
+          current_token = "-"
+        else
+          parser_output.push(Token.new(:operator, "-"))
+        end
       else
-        parser_output.push(Token.new(:operator, "-"))
+        current_token = "-"
       end
       parser_input[0] = ''
     when /^[(]/
