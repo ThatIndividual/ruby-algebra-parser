@@ -41,7 +41,8 @@ def lexical_analysis(parser_input)
       parser_input[0] = ''
     when /^[-]/
       if(parser_output.length > 0)
-        if(parser_output.last.type==:operator && parser_input.match(/^-[0-9.]/))
+        if(parser_output.last.type==:operator &&
+          parser_input.match(/^-[0-9.]/))
           current_token = "-"
         else
           parser_output.push(Token.new(:operator, "-"))

@@ -131,7 +131,7 @@ def syn_print(printer_input, printer_depth)
     syn_print(printer_input.children[0], printer_depth+1)
     syn_print(printer_input.children[1], printer_depth+1)
   elsif(printer_input.class == TreeLeaf)
-    print "  " * printer_depth,"└[",printer_input.value,"]\n"
+    print "  " * printer_depth,"└(",printer_input.value,")\n"
   end
 end
 
